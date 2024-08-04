@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
+        //шлюз для проверки бана
         Gate::define('userIsNotBanned', function (User $user){
             if ($user->ban_status == 0){
                 return true;
