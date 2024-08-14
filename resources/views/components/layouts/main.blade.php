@@ -8,7 +8,7 @@
     <title>{{ $title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
+
 {{--    <link rel="stylesheet" href={{ asset('css/style.css')}}>--}}
 {{--    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
 </head>
@@ -84,7 +84,8 @@
 </body>
 <footer style="height: 50px; background-color: #212429;" class="fixed-bottom">
     <div class="mt-3 text-center text-secondary">Разработано
-    <a href="https://t.me/OlegTatarenko" class="mt-3 text-center link-secondary">@OlegTatarenko</a>
+    back: <a href="https://t.me/OlegTatarenko" class="mt-3 text-center link-secondary">@OlegTatarenko</a>
+    front: <a href="https://t.me/Kirrinayaara" class="mt-3 text-center link-secondary">@Kirrinayaara</a>
     </div>
 </footer>
 </html>
