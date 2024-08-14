@@ -2,9 +2,9 @@
     <x-slot:title>
         Профиль
     </x-slot>
-
-    <div class="container" style="text-align: center;">
-        <h5>Профиль пользователя</h5>
+    <link rel="stylesheet" href="{{ asset('css/user_profile.css') }}">
+    <div class="container mb-3" style="text-align: center;">
+        <h1>Профиль пользователя</h1>
     </div>
 
     @php
@@ -24,11 +24,11 @@
                 break;
         }
     @endphp
-    <div class="col-md-6 offset-md-3">
-        <div>Имя: {{ $user->name }}</div>
-        <div>Количество сообщений: {{ $user->posts->count('id') }}</div>
-        <div>Статус бана: {{ $banStatus }}</div>
-        <div>Роль: {{ $role }}</div>
+    <div class="col-md-6 offset-md-3 user-profile">
+        <p>Имя: {{ $user->name }}</p>
+        <p>Количество сообщений: {{ $user->posts->count('id') }}</p>
+        <p>Статус бана: {{ $banStatus }}</p>
+        <p>Роль: {{ $role }}</p>
     </div>
 
 </x-layouts.main>

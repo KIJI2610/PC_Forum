@@ -1,10 +1,10 @@
 <x-layouts.main>
     <x-slot:title>
-        Новая
+        Новая тема
     </x-slot>
 
     <div class="container" style="text-align: center;">
-        <h5>Укажите название новой темы для раздела {{$section->name}}</h5>
+        <h1>Укажите название новой темы для раздела {{$section->name}}</h1>
     </div>
 
    <div class="col-md-6 offset-md-3">

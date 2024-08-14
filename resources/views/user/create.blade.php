@@ -2,62 +2,66 @@
     <x-slot:title>
         Регистрация
     </x-slot>
-
-    <div class="container" style="text-align: center;">
-        <h2>Регистрация</h2>
-    </div>
-
-        <div class="col-md-6 offset-md-3">
+    <link rel="stylesheet" href="{{ asset('css/reg.css') }}">
+        <div class="col-md-6 offset-md-3 window-aut">
+            <div class="container" style="text-align: center;">
+                <h1 class="label-login-title">Регистрация</h1>
+            </div>
             <form action="{{ route('user.store') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Имя</label>
+                    
                     <input
                         name="name"
                         type="text"
-                        class="form-control @error('name') is-invalid @enderror"
+                        class="form-control-0 @error('name') is-invalid @enderror form-control-0"
                         id="name"
-                        placeholder="Имя"
+                        oninput="focusInput('name', 'label-name')"
                         value="{{ old('name') }}">
+                    <label for="name" class="form-label-0" id="label-name">Имя</label>
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
                     <input
                         name="email"
                         type="email"
-                        class="form-control @error('email') is-invalid @enderror"
+                        class="form-control-0 @error('email') is-invalid @enderror"
                         id="email"
-                        placeholder="Email"
+                        oninput="focusInput('email', 'label-email')"
                         value="{{ old('email') }}">
+                    <label for="email" class="form-label-0" id="label-email">Email</label>
                     @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Пароль</label>
                     <input name="password"
                            type="password"
-                           class="form-control @error('password') is-invalid @enderror"
-                           id="password"
-                           placeholder="Пароль">
+                           class="form-control-0 @error('password') is-invalid @enderror"
+                           oninput="focusInput('password', 'label-password')"
+                           id="password">
+                    <label for="password" class="form-label-0" id="label-password">Пароль</label>
                     @error('password')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback no-move">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Подтвердите пароль</label>
+                    
                     <input name="password_confirmation"
                            type="password"
-                           class="form-control"
-                           id="password_confirmation"
-                           placeholder="Подтвердите пароль">
+                           class="form-control-0"
+                           oninput="focusInput('password_confirmation', 'label-password_confirmation')"
+                           id="password_confirmation">
+                    <label for="password_confirmation" class="form-label-0" id="label-password_confirmation">Подтвердите пароль</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-                <a href="{{route('login')}}" class="ms-3">Уже зарегистрированы?</a>
+                <div class="btn-container-login">
+                    <button type="submit" class="login-btn btn btn-primary">Зарегистрироваться</button>
+                    <button class="login-btn btn btn-primary reg-btn"><a href="{{route('login')}}" class="link-reg">Есть аккаунт ?</a></button>
+                </div>
+
             </form>
         </div>
-
+        <script src="{{ asset('js/reg.js') }}"></script>
 </x-layouts.main>

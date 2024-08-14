@@ -2,9 +2,9 @@
     <x-slot:title>
         Профиль
     </x-slot>
-
-    <div class="container" style="text-align: center;">
-        <h5>Ваш профиль</h5>
+    <link rel="stylesheet" href="{{ asset('css/user_profile.css') }}">
+    <div class="container mb-3" style="text-align: center;">
+        <h1>Ваш профиль</h1>
     </div>
     @php
         $banStatus = 'нет бана';
@@ -23,10 +23,10 @@
                 break;
         }
     @endphp
-    <div class="col-md-6 offset-md-3">
-        <div>Имя: {{ Auth::user()->name }}</div>
-        <div>Количество сообщений: {{ Auth::user()->posts->count('id') }}</div>
-        <div>Статус бана: {{ $banStatus }}</div>
-        <div>Роль: {{ $role }}</div>
+    <div class="col-md-6 offset-md-3 p-4 user-profile">
+        <p>Имя: {{ Auth::user()->name }}</p>
+        <p>Количество сообщений: {{ Auth::user()->posts->count('id') }}</p>
+        <p>Статус бана: {{ $banStatus }}</p>
+        <p>Роль: {{ $role }}</p>
     </div>
 </x-layouts.main>

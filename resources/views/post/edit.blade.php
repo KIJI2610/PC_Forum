@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="container" style="text-align: center;">
-        <h5>Отредактируйте свое сообщение в теме {{ $post->topic->name }}</h5>
+        <h1>Отредактируйте свое сообщение в теме {{ $post->topic->name }}</h1>
     </div>
 
    <div class="col-md-6 offset-md-3">

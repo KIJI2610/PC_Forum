@@ -4,57 +4,58 @@
     </x-slot>
 
     <div class="container" style="text-align: center;">
-        <h5>{{$section->name}}</h5>
+        <h1>Раздел {{$section->name}}</h1>
     </div>
 
-    @foreach($topics as $topic)
-        <div class="card mx-auto" style="width: 60rem;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a href="{{ route('posts', ['topicId' => $topic->id]) }}">
-                        {{ $topic->name }}
-                    </a>
-                </h5>
-                <div>
-                    <h8 class="card-subtitle text-body-secondary">
-                        Сообщений в теме: {{ $topic->posts()->count('id') }}
-                    </h8>
-                </div>
-                <h8 class="card-subtitle text-body-secondary">
+    <table class="table col-md-15 mt-3">
+        <tr class="table-dark">
+            <th class="col-3">Тема</th>
+            <th class="col-2">Автор</th>
+            <th class="col-2">Сообщ в теме</th>
+            <th class="col-2">Последний ответ</th>
+        </tr>
+        @foreach($topics as $topic)
+            <tr>
+                <td>
+                    <div class="mb-1 ">
+                        <h5><a class="link-dark"
+                               href="{{ route('posts', ['topicId' => $topic->id]) }}">{{ $topic->name }}</a></h5>
+                    </div>
+                    <div>
+                        @auth()
+                            @can('userIsNotBanned')
+                                @if(auth()->user()->id == $topic->user_id or auth()->user()->role->name == 'moderator')
+                                    <span class="badge rounded-pill bg-success">
+                                        <a class="text-light" href="{{ route('topic.edit', ['topicId' => $topic->id]) }}">Редактировать</a>
+                                    </span>
+                                    <span class="badge rounded-pill bg-danger">
+                                        <a class="text-light" href="{{ route('topic.soft-del', ['topicId' => $topic->id]) }}">Удалить</a>
+                                    </span>
+                                @endif
+                            @endcan
+                        @endauth
+                    </div>
+                </td>
+                <td><a class="link-dark" href="{{ route('user.profile', ['userId' => $topic->user->id]) }}">{{ $topic->user->name }}</a></td>
+                <td>{{ $topic->posts()->count('id') }}</td>
+                <td>
                     {{--если в массиве (в теме) есть сообщения--}}
                     @if(count($topic->posts()->latest()->take(1)->get('created_at')->all()))
-                        Последнее сообщение: {{ $topic->posts()->orderByDesc('created_at')->first()->updated_at}}
+                        {{ $topic->posts()->orderByDesc('created_at')->first()->updated_at}}
                     @endif
-                </h8>
-                @auth()
-                    @can('userIsNotBanned')
-                        @if(auth()->user()->id == $topic->user_id or auth()->user()->role->name == 'moderator')
-                            <div>
-                                <h8 class="card-subtitle text-body-secondary">
-                                    -<a href="{{ route('topic.edit', ['topicId' => $topic->id]) }}">
-                                        редактировать
-                                    </a>
-                                </h8>
-                                -
-                                <h8 class="card-subtitle text-body-secondary">
-                                    <a href="{{ route('topic.soft-del', ['topicId' => $topic->id]) }}">
-                                        удалить (включая все сообщения из темы)
-                                    </a>-
-                                </h8>
-                            </div>
-                        @endif
-                    @endcan
-                @endauth
-            </div>
-        </div>
-    @endforeach
+                </td>
+            </tr>
+        @endforeach
+    </table>
+
+
     @auth()
         @can('userIsNotBanned')
-            <div class="container" style="text-align: center;">
+            <div class="container text-center" >
                 <h6>
-                    <a href="{{ route('topic.create', ['sectionId' => $section->id]) }}">
-                        Создать новую тему в разделе {{$section->name}}
-                    </a>
+                    <a class="btn btn-outline-dark" href="{{ route('topic.create', ['sectionId' => $section->id]) }}"
+                       role="button">Создать новую тему в разделе {{$section->name}}</a>
+
                 </h6>
             </div>
         @endcan

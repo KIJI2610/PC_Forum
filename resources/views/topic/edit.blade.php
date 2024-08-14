@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="container" style="text-align: center;">
-        <h5>Отредактируйте название своей темы из раздела {{ $topic->section->name }}</h5>
+        <h1>Отредактируйте название своей темы из раздела {{ $topic->section->name }}</h1>
     </div>
 
    <div class="col-md-6 offset-md-3">

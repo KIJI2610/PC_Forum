@@ -3,29 +3,32 @@
         Логин
     </x-slot>
 
-    <div class="container" style="text-align: center;">
-        <h2>Войдите в свой аккаунт</h2>
-    </div>
+    
 
-   <div class="col-md-6 offset-md-3">
+   <div class="col-md-6 offset-md-3 window-aut">
+        <div class="container" style="text-align: center;">
+             <h1 class="label-login-title">Войдите в свой аккаунт</h1>
+        </div>
        <form action="{{ route('login.auth') }}" method="post">
            @csrf
            <div class="mb-3">
-               <label for="email" class="form-label">Email</label>
                <input
                    name="email"
                    type="email"
-                   class="form-control"
-                   id="email"
-                   placeholder="Email">
+                   class="form-control-0"
+                   oninput="focusInput('email', 'label-email')"
+                   id="email">
+                   
+                <label for="email" class="form-label-0" id="label-email">Email</label>
            </div>
            <div class="mb-3">
-               <label for="password" class="form-label">Пароль</label>
+               
                <input name="password"
                       type="password"
-                      class="form-control"
-                      id="password"
-                      placeholder="Пароль">
+                      class="form-control-0"
+                      oninput="focusInput('password', 'label-password')"
+                      id="password">
+                <label for="password" class="form-label-0" id="label-password">Пароль</label>
            </div>
            <div class="mb-3 form-check">
                <input name="remember" class="form-check-input" type="checkbox" id="remember">
@@ -33,8 +36,12 @@
                    Запоминть меня
                </label>
            </div>
-           <button type="submit" class="btn btn-primary">Войти</button>
+           <div class="btn-container-login">
+                <button type="submit" class="login-btn btn btn-primary">Войти</button>
+           </div>
+
        </form>
    </div>
+   <script src="{{ asset('js/aut.js') }}"></script>
 
 </x-layouts.main>

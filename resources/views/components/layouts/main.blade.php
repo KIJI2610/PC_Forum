@@ -7,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
+{{--    <link rel="stylesheet" href={{ asset('css/style.css')}}>--}}
+{{--    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
 </head>
-<body>
-
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+<body style="background-color: #b6d1d9;">
+<nav class="sticky-top navbar navbar-expand-lg bg-dark" id="header" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">Главная</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -64,7 +66,7 @@
         @endif
 
         @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success text-center">
                 {{ session('success') }}
             </div>
         @endif
@@ -80,4 +82,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<footer style="height: 50px; background-color: #212429;" class="fixed-bottom">
+    <div class="mt-3 text-center text-secondary">Разработано
+    <a href="https://t.me/OlegTatarenko" class="mt-3 text-center link-secondary">@OlegTatarenko</a>
+    </div>
+</footer>
 </html>

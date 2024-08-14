@@ -1,0 +1,9 @@
+.home-main-label{
+    background-color: rgb(49, 57, 54);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    user-select: none;
+}
