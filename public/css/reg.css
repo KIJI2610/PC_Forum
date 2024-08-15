@@ -1,3 +1,5 @@
-.no-move{
-    color: blue;
+
+.invalid-feedback{
+    background-color: aqua;
+    height: 10px;
 }

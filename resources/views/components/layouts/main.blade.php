@@ -28,15 +28,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('my.profile') }}">Мой профиль</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">Выйти из аккаунта</a>
-                    </li>
+                    
                     {{--                        //если пользователь имеет роль мoderator, отработает шлюз и покажет ссылку на админ панель--}}
                     @can('moderator')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('moderator.showUsers') }}">Модерация</a>
                         </li>
                     @endcan
+                    <li class="nav-item">
+                        <a class="nav-link exit" href="{{ route('logout') }}" onclick="">Выйти из аккаунта</a>
+                    </li>
                     {{--если пользователь не аутентифицирован, покажем ему Регистрация и Логин--}}
                 @else
                     <li class="nav-item">
@@ -81,8 +82,9 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
 </body>
-<footer style="height: 50px; background-color: #212429;" class="fixed-bottom">
+<footer style="background-color: #212429;" class="fixed-bottom">
     <div class="mt-3 text-center text-secondary">Разработано
     back: <a href="https://t.me/OlegTatarenko" class="mt-3 text-center link-secondary">@OlegTatarenko</a>
     front: <a href="https://t.me/Kirrinayaara" class="mt-3 text-center link-secondary">@Kirrinayaara</a>

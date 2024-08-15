@@ -109,7 +109,24 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 1000px){
+    .btn-container-login{
+        display: grid;
+        padding-bottom: 10px;
+        height: 140px;
+    }
+}
+
+
+/* @media (max-height: 1100px){
+    .window-aut{
+
+    }
+} */
+
 .window-aut{
+    margin-top: 0;
     padding-top: 10px;
     padding-left:20px ;
     padding-right: 20px;
@@ -135,4 +152,11 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px rgba(245, 245, 255, 1) inset !important;
     -webkit-text-fill-color: black !important;
+}
+
+.exit{
+    color:rgb(189, 110, 0);
+    position: relative;
+    left: 0;
+    font-weight: 600;
 }

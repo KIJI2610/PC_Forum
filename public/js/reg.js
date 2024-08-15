@@ -15,3 +15,11 @@ function focusInput(inp, label){
         LABEL.classList.remove('focused')
     }
 }
+
+function clickDefaultTextLabel(label){
+    const LABEL = document.getElementById(label)
+    const VALUE = LABEL.textContent.trim()
+    if(VALUE !== LABEL.getAttribute('data')){
+        LABEL.textContent = LABEL.getAttribute('data')
+    }
+}

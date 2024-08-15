@@ -17,11 +17,15 @@
                         class="form-control-0 @error('name') is-invalid @enderror form-control-0"
                         id="name"
                         oninput="focusInput('name', 'label-name')"
+                        onclick="clickDefaultTextLabel('label-name')"
                         value="{{ old('name') }}">
-                    <label for="name" class="form-label-0" id="label-name">Имя</label>
-                    @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                        <label for="name" class="form-label-0" id="label-name" data="Имя">
+                            @if ($errors->has('name'))
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            @else
+                                Имя
+                            @endif
+                        </label>
                 </div>
                 <div class="mb-3">
                     <input
@@ -30,22 +34,38 @@
                         class="form-control-0 @error('email') is-invalid @enderror"
                         id="email"
                         oninput="focusInput('email', 'label-email')"
+                        onclick="clickDefaultTextLabel('label-email')"
                         value="{{ old('email') }}">
-                    <label for="email" class="form-label-0" id="label-email">Email</label>
+                    <!-- <label for="email" class="form-label-0" id="label-email">Email</label>
                     @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    @enderror -->
+                    <label for="email" class="form-label-0" id="label-email" data="Email">
+                            @if ($errors->has('email'))
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @else
+                                Email
+                            @endif
+                    </label>
                 </div>
                 <div class="mb-3">
                     <input name="password"
                            type="password"
                            class="form-control-0 @error('password') is-invalid @enderror"
                            oninput="focusInput('password', 'label-password')"
+                           onclick="clickDefaultTextLabel('label-password')"
                            id="password">
-                    <label for="password" class="form-label-0" id="label-password">Пароль</label>
+                    <!-- <label for="password" class="form-label-0" id="label-password">Пароль</label>
                     @error('password')
-                    <div class="invalid-feedback no-move">{{ $message }}</div>
-                    @enderror
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror -->
+                    <label for="password" class="form-label-0" id="label-password" data="Пароль">
+                            @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                            @else
+                                Пароль
+                            @endif
+                    </label>
                 </div>
                 <div class="mb-3">
                     
