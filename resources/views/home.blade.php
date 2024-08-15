@@ -12,7 +12,6 @@
                     <th class="col-2">Раздел</th>
                     <th class="col-1">Тем</th>
                     <th class="col-1">Сообщений</th>
-                    <th class="col-2">Последний ответ</th>
                 </tr>
                 @foreach($sections as $section)
                     <tr>
@@ -26,7 +25,6 @@
                                 }
                         @endphp
                         <td> {{ $count }}</td>
-                        <td>Последний ответ</td>
                     </tr>
                 @endforeach
             </table>
