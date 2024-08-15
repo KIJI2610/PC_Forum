@@ -3,7 +3,7 @@
         Профиль
     </x-slot>
     <link rel="stylesheet" href="{{ asset('css/user_profile.css') }}">
-    <div class="container mb-3" style="text-align: center;">
+    <div class="container mb-3 title-profile" style="text-align: center;">
         <h1>Ваш профиль</h1>
     </div>
     @php

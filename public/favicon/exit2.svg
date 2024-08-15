@@ -1,0 +1,28 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Дверь -->
+  <g id="door">
+    <rect x="120" y="60" width="60" height="80" rx="5" ry="5" fill="#f0f0f0" stroke="#000" stroke-width="2"/>
+  </g>
+
+  <!-- Стрелка -->
+  <g id="arrow" transform="translate(0 80)">
+    <polygon points="0,0 20,10 0,20" fill="#ffa500" stroke="#000" stroke-width="2"/>
+  </g>
+
+  <!-- Анимация движения стрелки -->
+  <animateTransform xlink:href="#arrow" attributeName="transform" type="translate" from="0 80" to="120 80" dur="2s" fill="freeze"/>
+
+  <!-- Анимация рассыпания двери -->
+  <animateTransform xlink:href="#door" attributeName="transform" type="translate" from="0 0" to="0 20" dur="0.5s" begin="2s" fill="freeze"/>
+  <animateTransform xlink:href="#door" attributeName="transform" type="rotate" from="0 150 100" to="45 150 100" dur="0.5s" begin="2s" fill="freeze"/>
+
+  <!-- Пыль -->
+  <g id="dust" transform="translate(120 140)">
+    <circle cx="0" cy="0" r="5" fill="#d3d3d3"/>
+    <circle cx="10" cy="0" r="5" fill="#d3d3d3"/>
+    <circle cx="20" cy="0" r="5" fill="#d3d3d3"/>
+  </g>
+
+  <!-- Анимация пыли -->
+  <animateTransform xlink:href="#dust" attributeName="transform" type="translate" from="120 140" to="180 140" dur="2s" fill="freeze"/>
+</svg>

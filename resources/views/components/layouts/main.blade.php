@@ -21,24 +21,26 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 header-text">
                 {{--если пользователь аутентифицирован, покажем эти роуты--}}
                 @auth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('my.profile') }}">Мой профиль</a>
                     </li>
-                    
-                    {{--                        //если пользователь имеет роль мoderator, отработает шлюз и покажет ссылку на админ панель--}}
+
+                    {{--если пользователь имеет роль moderator, отработает шлюз и покажем ссылку на админ панель--}}
                     @can('moderator')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('moderator.showUsers') }}">Модерация</a>
                         </li>
                     @endcan
-                    <li class="nav-item">
-                        <a class="nav-link exit" href="{{ route('logout') }}" onclick="">Выйти из аккаунта</a>
+                @endif
+            </ul>
+            <ul class="navbar-nav {{ auth()->check() ? 'ms-auto' : '' }} mb-2 mb-lg-0 header-text">
+                @auth
+                    <li class="nav-item exit-item">
+                        <a class="nav-link" id="exit" href="{{ route('logout') }}" onclick="">Выйти из аккаунта</a>
                     </li>
-                    {{--если пользователь не аутентифицирован, покажем ему Регистрация и Логин--}}
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Войти</a>
@@ -47,7 +49,6 @@
                         <a class="nav-link" href="{{ route('user.register') }}">Регистрация</a>
                     </li>
                 @endif
-
             </ul>
         </div>
     </div>
