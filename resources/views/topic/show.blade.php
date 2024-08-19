@@ -3,6 +3,7 @@
         {{$section->name}}
     </x-slot>
 
+    <link rel="stylesheet" href="{{ asset('css/show_topic.css') }}">
     <div class="container" style="text-align: center;">
         <h1>Раздел {{$section->name}}</h1>
     </div>
@@ -25,11 +26,11 @@
                         @auth()
                             @can('userIsNotBanned')
                                 @if(auth()->user()->id == $topic->user_id or auth()->user()->role->name == 'moderator')
-                                    <span class="badge rounded-pill bg-success">
-                                        <a class="text-light" href="{{ route('topic.edit', ['topicId' => $topic->id]) }}">Редактировать</a>
+                                    <span class="redact-btn">
+                                        <a class="redact-link" href="{{ route('topic.edit', ['topicId' => $topic->id]) }}">Редактировать</a>
                                     </span>
-                                    <span class="badge rounded-pill bg-danger">
-                                        <a class="text-light" href="{{ route('topic.soft-del', ['topicId' => $topic->id]) }}">Удалить</a>
+                                    <span class="delete-btn">
+                                        <a class="delete-link" href="{{ route('topic.soft-del', ['topicId' => $topic->id]) }}">Удалить</a>
                                     </span>
                                 @endif
                             @endcan

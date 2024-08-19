@@ -2,7 +2,7 @@
     <x-slot:title>
         {{$topic->name}}
     </x-slot>
-
+    <link rel="stylesheet" href="{{ asset('css/show_topic.css') }}">
     <div class="container" style="text-align: center;">
         <h1>Обсуждение в теме {{$topic->name}}</h1>
         <a class="link" href="{{ route('topics', ['sectionId' => $topic->section_id]) }}">
@@ -21,11 +21,11 @@
                         @auth()
                             @can('userIsNotBanned')
                                 @if(auth()->user()->id == $post->user_id or auth()->user()->role->name == 'moderator')
-                                    <span class="badge rounded-pill bg-success">
-                                        <a class="text-light" href="{{ route('post.edit', ['postId' => $post->id]) }}">Редактировать</a>
+                                    <span class="redact-btn">
+                                        <a class="redact-link" href="{{ route('post.edit', ['postId' => $post->id]) }}">Редактировать</a>
                                     </span>
-                                    <span class="badge rounded-pill bg-danger">
-                                        <a class="text-light" href="{{ route('post.soft-del', ['postId' => $post->id]) }}">Удалить</a>
+                                    <span class="delete-btn">
+                                        <a class="delete-link" href="{{ route('post.soft-del', ['postId' => $post->id]) }}">Удалить</a>
                                     </span>
                                 @endif
                             @endcan
@@ -43,7 +43,7 @@
         @can('userIsNotBanned')
             <div class="container" style="text-align: center;">
                 <h6>
-                    <a href="{{ route('post.create', ['topicId' => $topic->id]) }}">
+                    <a class="link" href="{{ route('post.create', ['topicId' => $topic->id]) }}">
                         новое сообщение
                     </a>
                 </h6>
