@@ -17,7 +17,7 @@
                     <a class="link-dark" href="{{ route('user.profile', ['userId' => $post->user_id]) }}">{{ $post->user->name }}</a>
                 </td>
                 <td>
-                    <div>
+                    <div class="line">
                         @auth()
                             @can('userIsNotBanned')
                                 @if(auth()->user()->id == $post->user_id or auth()->user()->role->name == 'moderator')
@@ -30,8 +30,9 @@
                                 @endif
                             @endcan
                         @endauth
+                        <div class="text-end line-date">{{ $post->created_at }}</div>
                     </div>
-                    <div class="text-end fw-light">{{ $post->created_at }}</div>
+                    
                     <div class="col-10 fs-5">{{ $post->content }}</div>
 
                 </td>
