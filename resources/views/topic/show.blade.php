@@ -42,7 +42,7 @@
                 <td>
                     {{--если в массиве (в теме) есть сообщения--}}
                     @if(count($topic->posts()->latest()->take(1)->get('created_at')->all()))
-                        {{ $topic->posts()->orderByDesc('created_at')->first()->updated_at}}
+                        {{ $topic->posts()->orderByDesc('created_at')->first()->updated_at->format('d.m.Y')}}
                     @endif
                 </td>
             </tr>

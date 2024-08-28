@@ -30,9 +30,9 @@
                                 @endif
                             @endcan
                         @endauth
-                        <div class="text-end line-date">{{ $post->created_at }}</div>
+                        <div class="text-end line-date">{{ $post->created_at->format('d.m.Y') }}</div>
                     </div>
-                    
+
                     <div class="col-10 fs-5">{{ $post->content }}</div>
 
                 </td>

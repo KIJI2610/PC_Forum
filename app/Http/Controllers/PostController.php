@@ -12,7 +12,7 @@ class PostController extends Controller
     public function topics($topic_id)
     {
         $topic = Topic::find($topic_id);
-        $posts = $topic->posts()->orderByDesc('created_at')->paginate(3);
+        $posts = $topic->posts()->orderBy('created_at')->paginate(3);
         return view('post.show', compact('topic', 'posts'));
     }
 
